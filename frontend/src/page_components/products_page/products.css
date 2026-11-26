@@ -1,0 +1,8 @@
+@reference "../../app/globals.css";
+
+/* Products page: page-specific layout only. */
+
+.products-description-cell {
+  min-width: var(--size-md);
+  max-width: var(--size-lg);
+}

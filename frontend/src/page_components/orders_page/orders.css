@@ -1,0 +1,37 @@
+@reference "../../app/globals.css";
+
+/* Orders list page: page-specific layout only. */
+
+.orders-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--space-12);
+  padding: var(--space-16);
+  border-bottom: var(--border-width-thin) solid var(--color-border);
+}
+
+.orders-toolbar-search {
+  flex: 1;
+  min-width: var(--size-sm);
+  max-width: var(--size-input-search);
+}
+
+.orders-toolbar-status {
+  width: var(--size-sm);
+}
+
+.orders-reference-link {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.orders-reference-link:hover {
+  text-decoration: underline;
+}
+
+/* The previous page stays visible, dimmed, while the next one loads. */
+.orders-table-stale {
+  opacity: var(--opacity-disabled);
+}

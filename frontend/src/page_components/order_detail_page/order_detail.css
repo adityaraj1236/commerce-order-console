@@ -1,0 +1,47 @@
+@reference "../../app/globals.css";
+
+/* Order detail page: items on the left, summary on the right (stacked on small screens). */
+
+.order-detail-title {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-12);
+  font-variant-numeric: tabular-nums;
+}
+
+.order-detail-layout {
+  display: grid;
+  gap: var(--space-section-gap);
+  align-items: start;
+
+  @variant desktop {
+    grid-template-columns: minmax(0, 1fr) var(--size-cart-panel);
+  }
+}
+
+.order-detail-skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.order-item-name {
+  font-weight: var(--font-weight-semibold);
+}
+
+.order-items-total-row .table-cell {
+  border-top: var(--border-width-thin) solid var(--color-border-strong);
+  font-weight: var(--font-weight-bold);
+}
+
+.fulfilment-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+}
+
+.fulfilment-final {
+  font-size: var(--text-body-sm);
+  color: var(--color-text-secondary);
+}

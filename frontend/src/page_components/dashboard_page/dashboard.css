@@ -1,0 +1,52 @@
+@reference "../../app/globals.css";
+
+/* Dashboard: metric card grids. Card surface comes from the base `card` class. */
+
+.dashboard-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.dashboard-section-title {
+  font-size: var(--text-h3);
+  line-height: var(--text-h3--line-height);
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--size-metric-card-min), 1fr));
+  gap: var(--space-16);
+}
+
+.metric-card {
+  gap: var(--space-8);
+  padding: var(--space-20);
+  transition:
+    border-color var(--motion-fast),
+    box-shadow var(--motion-fast);
+}
+
+.metric-card:hover {
+  border-color: var(--color-border-strong);
+  box-shadow: var(--shadow-md);
+}
+
+.metric-card-label {
+  font-size: var(--text-body-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-secondary);
+}
+
+.metric-card-value {
+  font-size: var(--text-display);
+  line-height: var(--text-display--line-height);
+  letter-spacing: var(--text-display--letter-spacing);
+  font-weight: var(--text-display--font-weight);
+  font-variant-numeric: tabular-nums;
+}
+
+.metric-card-hint {
+  font-size: var(--text-caption);
+  color: var(--color-text-muted);
+}

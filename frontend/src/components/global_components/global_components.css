@@ -1,0 +1,176 @@
+/* App-wide layout: shell, sidebar navigation and page header.
+   Values come only from src/app/theme.css tokens. */
+
+@reference "../../app/globals.css";
+
+/* ============================================================
+   App shell: stacked on small screens, sidebar + content on desktop
+   ============================================================ */
+
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+
+  @variant desktop {
+    flex-direction: row;
+  }
+}
+
+.app-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.app-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-section-gap);
+  max-width: var(--size-content-max);
+  margin-inline: auto;
+  padding: var(--space-page-padding);
+}
+
+/* ============================================================
+   Sidebar: a top bar below desktop, a fixed column on desktop
+   ============================================================ */
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sidebar);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  padding: var(--space-12) var(--space-page-padding);
+  background: var(--color-sidebar);
+  color: var(--color-sidebar-text);
+
+  @variant desktop {
+    width: var(--size-sidebar);
+    height: 100dvh;
+    flex-shrink: 0;
+    gap: var(--space-24);
+    padding: var(--space-24) var(--space-16);
+  }
+}
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  color: var(--color-sidebar-text-active);
+
+  @variant desktop {
+    padding-inline: var(--space-12);
+    padding-bottom: var(--space-16);
+    border-bottom: var(--border-width-thin) solid var(--color-sidebar-divider);
+  }
+}
+
+.sidebar-brand-name {
+  font-size: var(--text-body-lg);
+  font-weight: var(--font-weight-bold);
+}
+
+.sidebar-nav-list {
+  display: flex;
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+
+  @variant desktop {
+    flex-direction: column;
+    overflow-x: visible;
+  }
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  min-height: var(--size-control-md);
+  padding-inline: var(--space-12);
+  border-radius: var(--radius-md);
+  font-weight: var(--font-weight-medium);
+  white-space: nowrap;
+  transition:
+    background-color var(--motion-fast),
+    color var(--motion-fast);
+}
+
+.sidebar-link:hover {
+  background: var(--color-sidebar-item-hover);
+  color: var(--color-sidebar-text-active);
+}
+
+.sidebar-link-active,
+.sidebar-link-active:hover {
+  background: var(--color-sidebar-item-active);
+  color: var(--color-sidebar-text-active);
+}
+
+/* ============================================================
+   Product identity: name + SKU
+   ============================================================ */
+
+.product-identity {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.product-identity-name {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.product-identity-sku {
+  font-size: var(--text-caption);
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ============================================================
+   Page header
+   ============================================================ */
+
+.page-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-16);
+}
+
+.page-header-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.page-header-back {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+  font-size: var(--text-body-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+}
+
+.page-header-back:hover {
+  color: var(--color-accent);
+}
+
+.page-header-description {
+  color: var(--color-text-secondary);
+}
+
+.page-header-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+}

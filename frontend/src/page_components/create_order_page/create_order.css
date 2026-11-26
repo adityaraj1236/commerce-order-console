@@ -1,0 +1,128 @@
+@reference "../../app/globals.css";
+
+/* Create Order page: catalogue on the left, cart on the right (stacked on small screens). */
+
+.create-order-layout {
+  display: grid;
+  gap: var(--space-section-gap);
+  align-items: start;
+
+  @variant desktop {
+    grid-template-columns: minmax(0, 1fr) var(--size-cart-panel);
+  }
+}
+
+.create-order-result-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+  margin-top: var(--space-8);
+}
+
+/* ---- Catalogue ---- */
+
+.product-picker-search {
+  width: min(var(--size-input-search), 100%);
+}
+
+.product-picker-stock {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+.product-picker-available {
+  font-size: var(--text-caption);
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- Cart ---- */
+
+.cart-panel {
+  @variant desktop {
+    position: sticky;
+    top: var(--space-page-padding);
+  }
+}
+
+.cart-count {
+  font-size: var(--text-body-sm);
+  color: var(--color-text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
+.cart-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.cart-lines {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cart-line {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  padding-block: var(--space-12);
+  border-bottom: var(--border-width-thin) solid var(--color-border);
+}
+
+.cart-line:first-child {
+  padding-top: 0;
+}
+
+.cart-line-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-8);
+}
+
+.cart-line-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.cart-line-price {
+  font-size: var(--text-body-sm);
+  color: var(--color-text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
+.cart-line-total {
+  margin-left: auto;
+  font-weight: var(--font-weight-semibold);
+  font-variant-numeric: tabular-nums;
+}
+
+.cart-line-issue {
+  font-size: var(--text-body-sm);
+  color: var(--color-danger-text);
+}
+
+.cart-line-limit {
+  font-size: var(--text-body-sm);
+  color: var(--color-warning-text);
+}
+
+/* "Only 3 left" urgency text for low-stock products in the catalogue. */
+.product-picker-available-low {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-stock-low-text);
+}
+
+.cart-note {
+  font-size: var(--text-caption);
+  color: var(--color-text-muted);
+  text-align: center;
+}

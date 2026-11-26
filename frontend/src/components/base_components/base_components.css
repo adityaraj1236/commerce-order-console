@@ -1,0 +1,698 @@
+/* Shared stylesheet for every primitive in base_components/.
+   Values come only from src/app/theme.css tokens. */
+
+@reference "../../app/globals.css";
+
+/* ============================================================
+   Icon sizing (Lucide icons receive these classes)
+   ============================================================ */
+
+.icon-sm {
+  width: var(--size-icon-sm);
+  height: var(--size-icon-sm);
+  flex-shrink: 0;
+}
+
+.icon-md {
+  width: var(--size-icon-md);
+  height: var(--size-icon-md);
+  flex-shrink: 0;
+}
+
+.icon-lg {
+  width: var(--size-icon-lg);
+  height: var(--size-icon-lg);
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   Button
+   ============================================================ */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-8);
+  border: var(--border-width-thin) solid transparent;
+  border-radius: var(--radius-md);
+  font-weight: var(--font-weight-semibold);
+  white-space: nowrap;
+  transition:
+    background-color var(--motion-fast),
+    border-color var(--motion-fast),
+    color var(--motion-fast),
+    opacity var(--motion-fast);
+}
+
+.button:disabled {
+  opacity: var(--opacity-disabled);
+  cursor: not-allowed;
+}
+
+.button-md {
+  min-height: var(--size-control-md);
+  padding-inline: var(--space-16);
+  font-size: var(--text-body);
+}
+
+.button-sm {
+  min-height: var(--size-control-sm);
+  padding-inline: var(--space-12);
+  font-size: var(--text-body-sm);
+}
+
+.button-full-width {
+  width: 100%;
+}
+
+.button-icon-only {
+  padding-inline: 0;
+  aspect-ratio: 1;
+}
+
+.button-primary {
+  background: var(--color-primary);
+  color: var(--color-text-on-primary);
+}
+
+.button-primary:hover:not(:disabled) {
+  background: var(--color-primary-hover);
+}
+
+.button-secondary {
+  background: var(--color-background);
+  color: var(--color-text-primary);
+  border-color: var(--color-border-strong);
+}
+
+.button-secondary:hover:not(:disabled) {
+  background: var(--color-hover);
+}
+
+.button-ghost {
+  background: transparent;
+  color: var(--color-text-secondary);
+}
+
+.button-ghost:hover:not(:disabled) {
+  background: var(--color-hover);
+  color: var(--color-text-primary);
+}
+
+.button-danger {
+  background: var(--color-danger);
+  color: var(--color-text-on-primary);
+}
+
+.button-danger:hover:not(:disabled) {
+  background: var(--color-danger-hover);
+}
+
+/* ============================================================
+   Form field: label + control + helper / error text
+   ============================================================ */
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.form-field-label {
+  font-size: var(--text-caption);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-secondary);
+}
+
+.form-field-hint {
+  font-size: var(--text-body-sm);
+  color: var(--color-text-muted);
+}
+
+.form-field-error {
+  font-size: var(--text-body-sm);
+  color: var(--color-danger-text);
+}
+
+/* ============================================================
+   Input and Select share one control style
+   ============================================================ */
+
+.control {
+  width: 100%;
+  min-height: var(--size-control-md);
+  padding-inline: var(--space-12);
+  background: var(--color-background);
+  border: var(--border-width-thin) solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  font-size: var(--text-body);
+  color: var(--color-text-primary);
+  transition: border-color var(--motion-fast);
+}
+
+.control::placeholder {
+  color: var(--color-text-muted);
+}
+
+.control:hover:not(:disabled) {
+  border-color: var(--color-text-muted);
+}
+
+.control:focus-visible {
+  border-color: var(--color-accent);
+}
+
+.control:disabled {
+  opacity: var(--opacity-disabled);
+  cursor: not-allowed;
+}
+
+.control[aria-invalid="true"] {
+  border-color: var(--color-danger);
+}
+
+.control-with-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.control-with-icon .control {
+  padding-left: calc(var(--space-12) + var(--size-icon-sm) + var(--space-8));
+}
+
+.control-icon {
+  position: absolute;
+  left: var(--space-12);
+  color: var(--color-text-muted);
+  pointer-events: none;
+}
+
+.control-select {
+  cursor: pointer;
+}
+
+/* ============================================================
+   Quantity stepper: [-] [ 2 ] [+]
+   ============================================================ */
+
+.quantity-stepper {
+  display: inline-flex;
+  align-items: stretch;
+  border: var(--border-width-thin) solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  background: var(--color-background);
+  overflow: hidden;
+}
+
+.quantity-stepper-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--size-control-sm);
+  min-height: var(--size-control-sm);
+  border: none;
+  background: transparent;
+  color: var(--color-text-secondary);
+  transition: background-color var(--motion-fast);
+}
+
+.quantity-stepper-button:hover:not(:disabled) {
+  background: var(--color-hover);
+  color: var(--color-text-primary);
+}
+
+.quantity-stepper-button:disabled {
+  opacity: var(--opacity-disabled);
+  cursor: not-allowed;
+}
+
+.quantity-stepper-input {
+  width: var(--size-input-quantity);
+  border: none;
+  border-inline: var(--border-width-thin) solid var(--color-border);
+  background: transparent;
+  text-align: center;
+  font-size: var(--text-body);
+  font-variant-numeric: tabular-nums;
+  appearance: textfield;
+}
+
+.quantity-stepper-input::-webkit-outer-spin-button,
+.quantity-stepper-input::-webkit-inner-spin-button {
+  appearance: none;
+  margin: 0;
+}
+
+/* ============================================================
+   Card
+   ============================================================ */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-background);
+  border: var(--border-width-thin) solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-12);
+  padding: var(--space-16) var(--space-20);
+  border-bottom: var(--border-width-thin) solid var(--color-border);
+}
+
+.card-title {
+  font-size: var(--text-h3);
+  line-height: var(--text-h3--line-height);
+  font-weight: var(--text-h3--font-weight);
+}
+
+.card-body {
+  padding: var(--space-20);
+}
+
+.card-body-flush {
+  padding: 0;
+}
+
+/* ============================================================
+   Table
+   ============================================================ */
+
+.table-scroll {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-body);
+}
+
+.table-header-cell {
+  padding: var(--space-12) var(--space-16);
+  background: var(--color-surface);
+  border-bottom: var(--border-width-thin) solid var(--color-border);
+  font-size: var(--text-caption);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-secondary);
+  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  white-space: nowrap;
+}
+
+.table-cell {
+  padding: var(--space-12) var(--space-16);
+  border-bottom: var(--border-width-thin) solid var(--color-border);
+  color: var(--color-text-primary);
+  vertical-align: middle;
+}
+
+.table-row:last-child .table-cell {
+  border-bottom: none;
+}
+
+.table-row-interactive {
+  cursor: pointer;
+  transition: background-color var(--motion-fast);
+}
+
+.table-row-interactive:hover {
+  background: var(--color-hover);
+}
+
+.table-cell-numeric {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.table-cell-muted {
+  color: var(--color-text-secondary);
+}
+
+/* ============================================================
+   Badge: one shape, color comes from a tone class.
+   Status and stock badges only choose the tone.
+   ============================================================ */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-6);
+  padding: var(--space-2) var(--space-8);
+  border-radius: var(--radius-pill);
+  font-size: var(--text-caption);
+  line-height: var(--text-caption--line-height);
+  font-weight: var(--font-weight-semibold);
+  white-space: nowrap;
+}
+
+.badge-dot {
+  width: var(--size-status-dot);
+  height: var(--size-status-dot);
+  border-radius: var(--radius-pill);
+  background: currentColor;
+}
+
+.badge-status-placed {
+  background: var(--color-status-placed-soft);
+  color: var(--color-status-placed-text);
+}
+
+.badge-status-packed {
+  background: var(--color-status-packed-soft);
+  color: var(--color-status-packed-text);
+}
+
+.badge-status-shipped {
+  background: var(--color-status-shipped-soft);
+  color: var(--color-status-shipped-text);
+}
+
+.badge-status-cancelled {
+  background: var(--color-status-cancelled-soft);
+  color: var(--color-status-cancelled-text);
+}
+
+.badge-stock-in {
+  background: var(--color-stock-in-soft);
+  color: var(--color-stock-in-text);
+}
+
+.badge-stock-low {
+  background: var(--color-stock-low-soft);
+  color: var(--color-stock-low-text);
+}
+
+.badge-stock-out {
+  background: var(--color-stock-out-soft);
+  color: var(--color-stock-out-text);
+}
+
+/* ============================================================
+   Pagination
+   ============================================================ */
+
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-12);
+  padding: var(--space-12) var(--space-16);
+  border-top: var(--border-width-thin) solid var(--color-border);
+}
+
+.pagination-summary {
+  font-size: var(--text-body-sm);
+  color: var(--color-text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
+.pagination-buttons {
+  display: flex;
+  gap: var(--space-8);
+}
+
+/* ============================================================
+   Summary list: label / value rows
+   ============================================================ */
+
+.summary-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  margin: 0;
+}
+
+.summary-list-row {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-16);
+  color: var(--color-text-secondary);
+}
+
+.summary-list-value {
+  margin: 0;
+  color: var(--color-text-primary);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.summary-list-row-emphasis {
+  padding-top: var(--space-8);
+  border-top: var(--border-width-thin) solid var(--color-border);
+  font-size: var(--text-h3);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+}
+
+/* ============================================================
+   Alert: inline message box (e.g. which cart lines are short)
+   ============================================================ */
+
+.alert {
+  display: flex;
+  gap: var(--space-12);
+  padding: var(--space-12) var(--space-16);
+  border: var(--border-width-thin) solid;
+  border-radius: var(--radius-md);
+  font-size: var(--text-body);
+}
+
+.alert-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.alert-title {
+  font-weight: var(--font-weight-semibold);
+}
+
+.alert-list {
+  margin: 0;
+  padding-left: var(--space-16);
+}
+
+.alert-error {
+  background: var(--color-danger-soft);
+  border-color: var(--color-danger);
+  color: var(--color-danger-text);
+}
+
+.alert-warning {
+  background: var(--color-warning-soft);
+  border-color: var(--color-warning);
+  color: var(--color-warning-text);
+}
+
+.alert-success {
+  background: var(--color-success-soft);
+  border-color: var(--color-success);
+  color: var(--color-success-text);
+}
+
+.alert-info {
+  background: var(--color-info-soft);
+  border-color: var(--color-info);
+  color: var(--color-info-text);
+}
+
+/* ============================================================
+   Empty / error state
+   ============================================================ */
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-8);
+  padding: var(--space-48) var(--space-24);
+  text-align: center;
+}
+
+.empty-state-icon {
+  margin-bottom: var(--space-8);
+  color: var(--color-text-muted);
+}
+
+.empty-state-error .empty-state-icon {
+  color: var(--color-danger);
+}
+
+.empty-state-title {
+  font-size: var(--text-h3);
+  font-weight: var(--text-h3--font-weight);
+}
+
+.empty-state-description {
+  max-width: var(--size-dialog);
+  color: var(--color-text-secondary);
+}
+
+.empty-state-action {
+  margin-top: var(--space-8);
+}
+
+/* ============================================================
+   Loading: spinner and skeleton
+   ============================================================ */
+
+.spinner {
+  animation: spinner-rotate var(--motion-duration-spin) linear infinite;
+}
+
+@keyframes spinner-rotate {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+.skeleton {
+  display: block;
+  width: 100%;
+  height: var(--text-body);
+  border-radius: var(--radius-xs);
+  background: linear-gradient(
+    90deg,
+    var(--color-surface-2) 0%,
+    var(--color-border) 50%,
+    var(--color-surface-2) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer var(--motion-duration-skeleton) ease-in-out infinite;
+}
+
+.skeleton-heading {
+  height: var(--text-h2);
+}
+
+.skeleton-display {
+  height: var(--text-display);
+}
+
+@keyframes skeleton-shimmer {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: -100% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton,
+  .spinner {
+    animation: none;
+  }
+}
+
+/* ============================================================
+   Modal (native <dialog>)
+   ============================================================ */
+
+.modal {
+  /* The browser centres a modal <dialog> with margin: auto; Tailwind's reset sets
+     every margin to 0, so it is restored here. */
+  margin: auto;
+  width: min(var(--size-dialog), calc(100% - var(--space-32)));
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-lg);
+  background: var(--color-background);
+  color: var(--color-text-primary);
+  box-shadow: var(--shadow-xl);
+}
+
+.modal::backdrop {
+  background: var(--color-backdrop);
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  padding: var(--space-24);
+}
+
+.modal-title {
+  font-size: var(--text-h3);
+  font-weight: var(--text-h3--font-weight);
+}
+
+.modal-description {
+  color: var(--color-text-secondary);
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-8);
+  margin-top: var(--space-12);
+}
+
+/* ============================================================
+   Toast
+   ============================================================ */
+
+.toast-region {
+  position: fixed;
+  right: var(--space-24);
+  bottom: var(--space-24);
+  z-index: var(--z-toast);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  width: min(var(--size-cart-panel), calc(100% - var(--space-48)));
+}
+
+.toast {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-12);
+  padding: var(--space-12) var(--space-16);
+  background: var(--color-background);
+  border: var(--border-width-thin) solid var(--color-border);
+  border-left-width: var(--border-width-thick);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+}
+
+.toast-success {
+  border-left-color: var(--color-success);
+}
+
+.toast-success .toast-icon {
+  color: var(--color-success);
+}
+
+.toast-error {
+  border-left-color: var(--color-danger);
+}
+
+.toast-error .toast-icon {
+  color: var(--color-danger);
+}
+
+.toast-message {
+  flex: 1;
+}
+
+.toast-title {
+  font-weight: var(--font-weight-semibold);
+}
+
+.toast-description {
+  font-size: var(--text-body-sm);
+  color: var(--color-text-secondary);
+}
